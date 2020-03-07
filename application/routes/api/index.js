@@ -12,6 +12,17 @@ router.get('/findAll', (req, res) => {
     })
 });
 
+router.get('/findById/:id', (req, res) => {
+  let id = Number(req.params.id)
+  database.findById(id).then(function(result){
+    res.status(200).send({
+        success: 'true',
+        message: 'Elements matching id ' + id,
+        payload: result
+        })
+    })
+});
+
 
 
 module.exports = router;
